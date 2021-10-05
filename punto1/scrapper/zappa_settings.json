@@ -9,11 +9,11 @@
         "keep_warm":false,
         "apigateway_enabled":false,
         "events": [{
-            "function": "app.hanlder",
+            "function": "app.handler",
             "event_source": {
-                  "arn":  "arn:aws:s3:::newsdata202110/newspaper/stage/",
+                  "arn":  "arn:aws:s3:::newsdata202110",
                   "events": [
-                    "s3:ObjectCreated:*"
+                    "s3:ObjectCreated:*" 
                   ]
                }
         }]
