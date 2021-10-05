@@ -16,11 +16,11 @@ def handler(event,context):
 	data={
 		'file':'/tmp/newspaper.html',
 		'bucket':'newsdata202110',
-		'path':'newspaper/stage/year='+str(localtime.tm_year)+'/month='+str(localtime.tm_mon)+'/day='+str(localtime.tm_mday)+'/'+str(localtime.tm_hour)+str(localtime.tm_min)+str(localtime.tm_sec)+'page.html'
+		'path':'newspaper/stage/year='+str(localtime.tm_year)+'/month='+str(localtime.tm_mon)+'/day='+str(localtime.tm_mday)+'/newspaper=El_tiempo/'+str(localtime.tm_hour)+str(localtime.tm_min)+str(localtime.tm_sec)+'page.html'
 	}
 	s3.meta.client.upload_file(data['file'],data['bucket'] , data['path'])
 	print("file uploaded!")
-	
+
 	return {
 			"status_code":200
 		}
