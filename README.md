@@ -1,7 +1,7 @@
 # Parcial2_BigData
 This is the solution for the exam.
 
-##Punto1
+## Punto1
 
 This folder contains:
 * a reader, that is used for request an html page (El tiempo newspaper) and save it in a s3 bucket.
