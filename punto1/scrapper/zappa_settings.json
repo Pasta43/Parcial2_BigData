@@ -1,0 +1,21 @@
+{
+    "dev": {
+        "app_function": "app.handler",
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "project_name": "scrapper",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-5rbbsq8pj",
+        "keep_warm":false,
+        "apigateway_enabled":false,
+        "events": [{
+            "function": "app.hanlder",
+            "event_source": {
+                  "arn":  "arn:aws:s3:::newsdata202110/newspaper/stage/",
+                  "events": [
+                    "s3:ObjectCreated:*"
+                  ]
+               }
+        }]
+    }
+}
