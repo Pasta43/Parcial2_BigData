@@ -34,7 +34,7 @@ def handler(event, context):
 
     csvFile.close()
     f.close()
-    s3.meta.client.upload_file('/tmp/'+justFileName+'.csv', 'resultsnewspaperbucket','newspaper/final/'+ fileName+'.csv')
+    s3.meta.client.upload_file('/tmp/'+justFileName+'.csv', 'resultsnewspaperbucket','newspaper/final/'+ fileName.replace('stage/','')+'.csv')
     return {
         'statusCode': 200,
         'body': 'Logs generated!'
