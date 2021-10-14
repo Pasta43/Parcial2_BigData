@@ -16,6 +16,7 @@ And for this item:
 * The bucket to save html files is: arn:aws:s3:::newsdata202110
 * The bucket to save csv files is: arn:aws:s3:::resultsnewspaperbucket
 
+The unit tests for the scrapper function are in scrapper/test folder 
 
 Have fun!
 
