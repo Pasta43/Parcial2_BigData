@@ -1,21 +1,40 @@
+import setuptools 
 import requests
 import boto3
 import time
 
+bucket="newsdata202110"
 def handler(event,context):
+	"""
+    Function that handles an s3 upload event.
+
+    Parameters:
+    - event: that contains the information about the event.
+    - context: that represents the execution context of the lambda function
+    """
 	localtime=time.localtime()
 	print("Getting html content...")
 	
 	s3 = boto3.resource('s3')
 	print("Loading in s3...")
-	getHTMLNewspaper("El_tiempo","https://www.eltiempo.com/",localtime,'newsdata202110',s3)
-	getHTMLNewspaper("El_espectador","https://www.elespectador.com/",localtime,'newsdata202110',s3)
+	getHTMLNewspaper("El_tiempo","https://www.eltiempo.com/",localtime,bucket,s3)
+	getHTMLNewspaper("El_espectador","https://www.elespectador.com/",localtime,bucket,s3)
 	print("files uploaded!")
 	return {
 			"status_code":200
 		}
 
 def getHTMLNewspaper(name, url,localtime,bucketname,s3):	
+	"""
+	Function that saves a html file from a newspaper web page in a s3 bucket.
+
+	Parameters:
+	- name: that contains the newspaper web page name
+	- url: that contains the newspaper web page url
+	- localtime: that contains an instance of localtime from time package
+	- bucketname: that contains the bucketname where the page will be saved.
+	- s3:that contains a boto3 resource instance to manage s3
+	"""
 	r = requests.get(url)
 	print("Creating temporaly file...")
 	filepath="/tmp/"+name+".html"
