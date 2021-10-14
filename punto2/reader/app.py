@@ -1,4 +1,3 @@
-import setuptools 
 import requests
 import boto3
 import time
