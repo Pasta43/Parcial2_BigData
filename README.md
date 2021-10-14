@@ -18,7 +18,7 @@ And for this item:
 
 The unit tests for the scrapper function are in scrapper/test folder 
 
-To make queries can you use Aws athena
+To make queries can you use Aws athena creating:
 
 ```sql
 CREATE EXTERNAL TABLE news(
@@ -42,9 +42,14 @@ TBLPROPERTIES (
   'has_encrypted_data'='false', 
   'transient_lastDdlTime'='1634184844',
   'skip.header.line.count'='1')
+```
+and repairing the table:
 
+```sql
 MSCK REPAIR TABLE news;
 ```
+
+
 
 Have fun!
 
