@@ -26,7 +26,6 @@ def getHTMLNewspaper(name, url,localtime,bucketname,s3):
 	data={
 		'file':filepath,
 		'bucket':bucketname,
-		'path':'newspaper/stage/year='+str(localtime.tm_year)+'/month='+str(localtime.tm_mon)+'/day='+str(localtime.tm_mday)+'/newspaper='+name+'/'+str(localtime.tm_hour)+str(localtime.tm_min)+str(localtime.tm_sec)+'page.html'
+		'path':'headlines/raw/newspaper='+name+'/year='+str(localtime.tm_year)+'/month='+str(localtime.tm_mon)+'/day='+str(localtime.tm_mday)+'/'+str(localtime.tm_hour)+str(localtime.tm_min)+str(localtime.tm_sec)+'page.html'
 	}
 	s3.meta.client.upload_file(data['file'],data['bucket'] , data['path'])
-	
