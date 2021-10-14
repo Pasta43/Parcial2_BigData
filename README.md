@@ -8,7 +8,7 @@ You should to use an virtual environment to execute this project. To test it you
 ## punto2
 
 This folder contains:
-* a reader, that is used for request an html page (El tiempo newspaper) and save it in a s3 bucket.
+* a reader, that is used for request an html page (El Tiempo and El Espectador newspaper) and save it in a s3 bucket.
 * a scrapper, that process the page, and save the results in another s3 bucket.
 
 
