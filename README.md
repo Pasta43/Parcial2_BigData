@@ -50,6 +50,11 @@ MSCK REPAIR TABLE news;
 ```
 
 
+To test the function, you have to invoke the reader with
+
+```zappa invoke dev app.handler```
+
 
 Have fun!
+
 
