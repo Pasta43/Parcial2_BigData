@@ -14,7 +14,7 @@ And for this item:
 
 The bucket to save files is: arn:aws:s3:::yahoofinancesbigdata2021 and they are reuploaded in arn:aws:s3:::yahoofinances2021bigdataresults
 
-The unit tests for the scrapper function are in test.py file
+The unit tests for the downloader function are in test.py file
 
 To make queries can you use Aws athena creating:
 
@@ -37,7 +37,7 @@ ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES (
   'serialization.format' = ',',
   'field.delim' = ','
-) LOCATION 's3://yahoofinancesbigdata2021/stocks'
+) LOCATION 's3://yahoofinances2021bigdataresults/stocks'
 TBLPROPERTIES ('has_encrypted_data'='false',
 'skip.header.line.count'='1');
 
@@ -47,6 +47,9 @@ and repairing the table
 ``` sql
 MSCK REPAIR TABLE finances;
 ```
+
+Finally invoke the downloader
+```zappa invoke dev app.handler```
 ## punto2
 
 This folder contains:
