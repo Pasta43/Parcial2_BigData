@@ -73,9 +73,26 @@ def handler(event, context):
         scrapping(fileName,justFileName,"El_tiempo",soup,s3)
     elif("El_espectador" in fileName):
         scrapping(fileName,justFileName,"El_espectador",soup,s3)
-    
+    repairTable()
     return {
         'statusCode': 200,
         'body': 'Logs generated!'
     }
 
+def repairTable():
+
+    client = boto3.client('athena')
+
+    config = {
+        'OutputLocation': 's3://' + destinationBucket + '/',
+        'EncryptionConfiguration': {'EncryptionOption': 'SSE_S3'}
+
+    }
+
+    # Query Execution Parameters
+    sql = 'MSCK REPAIR TABLE newspapers.news'
+    context = {'Database': 'newspapers'}
+
+    client.start_query_execution(QueryString = sql, 
+                                 QueryExecutionContext = context,
+                                 ResultConfiguration = config)
