@@ -12,7 +12,7 @@ This folder contains:
 
 And for this item:
 
-The bucket to save html files is: arn:aws:s3:::yahoofinancesbigdata2021
+The bucket to save files is: arn:aws:s3:::yahoofinancesbigdata2021 and they are reuploaded in arn:aws:s3:::yahoofinances2021bigdataresults
 
 The unit tests for the scrapper function are in test.py file
 
