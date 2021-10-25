@@ -5,6 +5,48 @@ you have the requirements.txt, that contains all the necessary packages to use t
 
 You should to use an virtual environment to execute this project. To test it you have to change your .aws/credentials file and the bucket names. 
 
+## punto1
+This folder contains:
+* a downloader, that is used for request an csv file from yahoo finances and save it in a s3 bucket.
+* a fixer, that repairs an athena table.
+
+And for this item:
+
+The bucket to save html files is: arn:aws:s3:::yahoofinancesbigdata2021
+
+The unit tests for the scrapper function are in test.py file
+
+To make queries can you use Aws athena creating:
+
+```sql
+CREATE EXTERNAL TABLE IF NOT EXISTS finances (
+  date date,
+  open double,
+  high double,
+  low double,
+  close double,
+  adj_close double,
+  volume bigint
+) PARTITIONED BY (
+  company string,
+  year int,
+  month int,
+  day int
+) 
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe' 
+WITH SERDEPROPERTIES (
+  'serialization.format' = ',',
+  'field.delim' = ','
+) LOCATION 's3://yahoofinancesbigdata2021/stocks'
+TBLPROPERTIES ('has_encrypted_data'='false',
+'skip.header.line.count'='1');
+
+```
+and repairing the table
+
+``` sql
+MSCK REPAIR TABLE finances;
+```
 ## punto2
 
 This folder contains:
