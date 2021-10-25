@@ -84,7 +84,7 @@ def repairTable():
     client = boto3.client('athena')
 
     config = {
-        'OutputLocation': 's3://' + destinationBucket + '/',
+        'OutputLocation': 's3://' + destinationBucket + '/news/final',
         'EncryptionConfiguration': {'EncryptionOption': 'SSE_S3'}
 
     }
