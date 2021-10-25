@@ -19,3 +19,5 @@ WITH SERDEPROPERTIES (
 ) LOCATION 's3://yahoofinancesbigdata2021/stocks'
 TBLPROPERTIES ('has_encrypted_data'='false',
 'skip.header.line.count'='1');
+
+MSCK REPAIR TABLE finances;
